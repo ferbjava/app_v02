@@ -33,30 +33,26 @@
         }
     </style>
 </head>
-<body>
+<body onload = "controller.setInitialView()">
     <h1>Memory game</h1>
     <p>After click on button 'highlight' game will highlight for a moment element. After that player have to guess the correct element by clicking on them</p>
     <section style="background: bisque">
         <div>
             <form>
                 Time of highlight
-                <input type="text">
+                <input type = "number" name = "timeHighlight" value = "2000"/>
+                <br>
+                <input type = "button" onclick="controller.startGame(timeHighlight.value)" value = "Start!"/>
             </form>
-        </div>
-        <div>
-            <button onclick = "controller.startApp()">Highlight!</button>
-            <button onclick = "controller.addPieces()">Add pieces</button>
         </div>
         <div>
             cos tam...
         </div>
     </section>
-    <div class="flex-container" id="board">
-        <div class="regularPiece" id = "piece_1" onclick = "controller.verifyPiece()"></div>
-        <div class="regularPiece" id = "piece_2" onclick = "controller.verifyPiece()"></div>
-        <div class="regularPiece" id = "piece_3" onclick = "controller.verifyPiece()"></div>
-        <div class="regularPiece" id = "piece_4" onclick = "controller.verifyPiece()"></div>
+    <div class="flex-container" id = "board">
     </div>
+
+
     <script src = "js/view.js"></script>
     <script src = "js/game.js"></script>
     <script src = "js/controller.js"></script>

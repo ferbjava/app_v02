@@ -1,51 +1,53 @@
+'use strict';
+
 var view = ( function() {
-    var numberOfPieces;
+    var numberOfPieces,
 
         setNumberOfPieces = function(pieces){
             numberOfPieces = pieces;
-        };
+        },
 
-        clearBoardGame = function(){
-            // document.body.remove();???
-        };
+        showPieces = function(){
+            var parent = document.getElementById('board');
+                for(var i = 1; i <= numberOfPieces; i++){
+                    var tempPiece = document.createElement("div"),
+                        tempId = 'piece_'+ i;
+                        tempPiece.className = 'regularPiece';
+                        tempPiece.setAttribute('id', tempId);
+                        tempPiece.addEventListener('click',function(){controller.verifyPiece(this.id);});
+                        parent.appendChild(tempPiece);
+            }
+        },
+
+        clearBoard = function(){
+            for(var i = 1; i <= numberOfPieces; i++){
+                var tempId = 'piece_'+i,
+                    pieceToRemove = document.getElementById(tempId);
+                    pieceToRemove.parentNode.removeChild(pieceToRemove);
+            }
+        },
 
         highlightPieces = function(piecesId){
-            for(i = 0; i < piecesId.length; i++){
-                var piece = "piece_"+piecesId[i].toString();
-                var selectedPiece = document.getElementById(piece);
+            for(var i = 0; i < piecesId.length; i++){
+                var pieceId = piecesId[i],
+                    selectedPiece = document.getElementById(pieceId);
                     selectedPiece.setAttribute("class", "highlightedPiece");
             }
-        };
+        },
 
         showBasicView = function(){
-            for(i = 1; i <= numberOfPieces; i++){
-                var piece = "piece_"+i.toString();
-                var selectedPiece = document.getElementById(piece);
-                selectedPiece.setAttribute("class", "regularPiece");
+            for(var i = 1; i <= numberOfPieces; i++){
+                var piece = "piece_"+i.toString(),
+                    selectedPiece = document.getElementById(piece);
+                    selectedPiece.setAttribute("class", "regularPiece");
             }
-        };
-
-
-
-        addPieces = function(){
-            var parent = document.getElementById('board');
-            var existingPiecesNo = document.getElementsByClassName('regularPiece').length;
-            var tempId = existingPiecesNo + 1;
-            var temporaryPiec = document.createElement("div");
-                temporaryPiec.className = 'regularPiece';
-                temporaryPiec.setAttribute('id','piece_' + tempId);
-                // temporaryPiec.setAttribute('onclick', 'controller.verifyPiece');
-            var pieceText = document.createTextNode("id = " + tempId);
-                temporaryPiec.appendChild(pieceText);
-                parent.appendChild(temporaryPiec);
         };
 
     return {
+        'showPieces':showPieces,
         'setNumberOfPieces': setNumberOfPieces,
-        'clearBoardGame': clearBoardGame,
+        'clearBoard': clearBoard,
         'highlightPieces': highlightPieces,
         'showBasicView': showBasicView,
-
-        'addPieces': addPieces
     }
 })();

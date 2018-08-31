@@ -1,24 +1,43 @@
+'use strict';
+
 var game = (function(){
-    var inside_field = 'hello madafaka!',
-        initialNumberOfPieces = 4,
+    var initialNumberOfPieces = 4,
         numberOfPieces,
+        timeHighlight,
         numberOfPiecesToGuess,
         piecesToGuess = [],
+        piecesGuessed = [],
+        isGameOn,
+        isHighlighted,
 
-        startGame = function(){
+        gameInit = function(){
             numberOfPieces = initialNumberOfPieces;
-            inside_field = 'hello madafaka!';
+            isGameOn = false;
+            isHighlighted = false;
         },
 
         getNumberOfPieces = function (){
             return numberOfPieces;
         },
 
+        increasePiecesNo = function(){
+            numberOfPieces++;
+        },
+
+        setTimeHighlight = function(time){
+            timeHighlight = time;
+        },
+
+        getTimeHighlight = function(){
+            return timeHighlight;
+        },
+
         calculatePiecesToGuess = function (){
             numberOfPiecesToGuess = parseInt((numberOfPieces-2)/2);
             piecesToGuess.length = 0;
+            piecesGuessed.length = 0;
             while(piecesToGuess.length < numberOfPiecesToGuess){
-                var tempId = Math.ceil(Math.random()*numberOfPieces);
+                var tempId = 'piece_'+Math.ceil(Math.random()*numberOfPieces);
                 if(!piecesToGuess.includes(tempId)){
                     piecesToGuess.push(tempId);
                 }
@@ -33,29 +52,53 @@ var game = (function(){
             return piecesToGuess;
         },
 
-
-
-        setField = function (newField){
-            inside_field = newField;
+        setIsHighlighted = function(value){
+            isHighlighted = value;
         },
 
-        getField = function(){
-          return inside_field;
+        getIsHighlighted = function(){
+            return isHighlighted;
         },
 
-        printField = function (){
-            console.log(inside_field);
+        setIsGameOn = function(value){
+            isGameOn = value;
+        },
+
+        getIsGameOn = function(){
+            return isGameOn;
+        },
+
+        verifyPiece = function(id){
+            if(!isHighlighted){
+                if(piecesToGuess.includes(id)){
+                    piecesGuessed.push(id);
+                    if(piecesToGuess.length===piecesGuessed.length){
+                        return 1;
+                    } else {
+                        return 2;
+                    }
+                }else{
+                    return 3;
+                }
+            }
         };
 
     return {
-        'startGame': startGame,
+        'gameInit': gameInit,
+
         'getNumberOfPieces': getNumberOfPieces,
+        'increasePiecesNo': increasePiecesNo,
+
+        'setTimeHighlight': setTimeHighlight,
+        'getTimeHighlight': getTimeHighlight,
+
         'calculatePiecesToGuess': calculatePiecesToGuess,
         'getNumberOfPiecesToGuess': getNumberOfPiecesToGuess,
         'getPiecesToGuess': getPiecesToGuess,
-
-        'setField': setField,
-        'getField': getField,
-        'printField': printField
+        'setIsHighlighted': setIsHighlighted,
+        'getIsHighlighted': getIsHighlighted,
+        'setIsGameOn': setIsGameOn,
+        'getIsGameOn': getIsGameOn,
+        'verifyPiece': verifyPiece
     }
 })();
