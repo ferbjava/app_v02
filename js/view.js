@@ -35,12 +35,26 @@ var view = ( function() {
             }
         },
 
+        highlightCorrectPiece = function(pieceId){
+            var selectedPiece = document.getElementById(pieceId);
+            selectedPiece.setAttribute("class", "correctPiece");
+        },
+
+        highlightInvalidPiece = function(pieceId){
+            var selectedPiece = document.getElementById(pieceId);
+            selectedPiece.setAttribute("class", "invalidPiece");
+        },
+
         showBasicView = function(){
             for(var i = 1; i <= numberOfPieces; i++){
                 var piece = "piece_"+i.toString(),
                     selectedPiece = document.getElementById(piece);
                     selectedPiece.setAttribute("class", "regularPiece");
             }
+        },
+
+        showMessage = function(message){
+            alert(message);
         };
 
     return {
@@ -48,6 +62,9 @@ var view = ( function() {
         'setNumberOfPieces': setNumberOfPieces,
         'clearBoard': clearBoard,
         'highlightPieces': highlightPieces,
+        'highlightCorrectPiece': highlightCorrectPiece,
+        'highlightInvalidPiece': highlightInvalidPiece,
         'showBasicView': showBasicView,
+        'showMessage': showMessage
     }
 })();

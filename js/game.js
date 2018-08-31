@@ -71,6 +71,9 @@ var game = (function(){
         verifyPiece = function(id){
             if(!isHighlighted){
                 if(piecesToGuess.includes(id)){
+                    if(piecesGuessed.includes(id)){
+                        return 3;
+                    }
                     piecesGuessed.push(id);
                     if(piecesToGuess.length===piecesGuessed.length){
                         return 1;

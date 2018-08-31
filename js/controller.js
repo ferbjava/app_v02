@@ -13,17 +13,12 @@ var controller = (function(){
 
             view.clearBoard();
             displayLevel();
-            // game.calculatePiecesToGuess();
-            // view.highlightPieces(game.getPiecesToGuess());
-            // game.setIsHighlighted(true);
-            // setTimeout(pauseGame,game.getTimeHighlight());
         }
      },
 
      displayLevel = function(){
         view.setNumberOfPieces(game.getNumberOfPieces());
         view.showPieces();
-
         game.calculatePiecesToGuess();
         view.highlightPieces(game.getPiecesToGuess());
         game.setIsHighlighted(true);
@@ -42,13 +37,19 @@ var controller = (function(){
      verifyPiece = function(id){
         var status = game.verifyPiece(id);
         if(status === 1){
+            view.highlightCorrectPiece(id);
             view.clearBoard();
             game.increasePiecesNo();
             displayLevel();
         }else if(status === 2){
-
-        }else{
-            //game over!
+            view.highlightCorrectPiece(id);
+        }else if(status ===3){
+            view.highlightInvalidPiece(id);
+            // setTimeout(alert,100,message);
+            view.showMessage('Invalid choice! Game over!');
+            view.clearBoard();
+            setInitialView();
+            startGame(game.getTimeHighlight());
         }
      };
 
