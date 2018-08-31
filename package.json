@@ -1,0 +1,21 @@
+{
+  "name": "app_v02",
+  "version": "0.0.0",
+  "description": "another JS app",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -a localhost -p 8080 -o ",
+    "test": "karma start karma.conf.js"
+  },
+  "author": "Michal Kotecki",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^0.11.1",
+    "jasmine-core": "^3.2.1",
+    "karma": "^3.0.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.2"
+  },
+  "dependencies": {
+  }
+}

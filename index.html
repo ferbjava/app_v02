@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Best game in universe</title>
+    <style>
+        .flex-container{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            background: #808080;
+        }
+        div.regularPiece{
+            border-style: solid;
+            border-radius: 20px;
+            border-color: #008000;
+            background: #008000;
+            width: 5%;
+            height: 100px;
+            margin: 2%;
+        }
+        div.highlightedPiece{
+            border-style: solid;
+            border-radius: 20px;
+            border-color: #0000ff;
+            background: #0000ff;
+            width: 5%;
+            height: 100px;
+            margin: 2%;
+        }
+        div.regularPiece:hover{
+            border-style: outset;
+        }
+    </style>
+</head>
+<body>
+    <h1>Memory game</h1>
+    <p>After click on button 'highlight' game will highlight for a moment element. After that player have to guess the correct element by clicking on them</p>
+    <section style="background: bisque">
+        <div>
+            <form>
+                Time of highlight
+                <input type="text">
+            </form>
+        </div>
+        <div>
+            <button onclick = "controller.startApp()">Highlight!</button>
+            <button onclick = "controller.addPieces()">Add pieces</button>
+        </div>
+        <div>
+            cos tam...
+        </div>
+    </section>
+    <div class="flex-container" id="board">
+        <div class="regularPiece" id = "piece_1" onclick = "controller.verifyPiece()"></div>
+        <div class="regularPiece" id = "piece_2" onclick = "controller.verifyPiece()"></div>
+        <div class="regularPiece" id = "piece_3" onclick = "controller.verifyPiece()"></div>
+        <div class="regularPiece" id = "piece_4" onclick = "controller.verifyPiece()"></div>
+    </div>
+    <script src = "js/view.js"></script>
+    <script src = "js/game.js"></script>
+    <script src = "js/controller.js"></script>
+</body>
+</html>
