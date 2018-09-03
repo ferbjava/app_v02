@@ -3,7 +3,7 @@ var controller = (function(){
     var setInitialView = function(){
         game.gameInit();
         view.showPieces(game.getNumberOfPieces(), verifyPiece);
-        view.updateData(game.getLevel());
+        view.updateData(game.getGameData());
     },
 
      startGame = function(time){
@@ -28,10 +28,12 @@ var controller = (function(){
             status = game.verifyPiece(id);
         if(status === 1){
             view.highlightCorrectPiece(id);
+            view.updateData(game.getGameData());
             game.increasePiecesNo();
             setTimeout(displayLevel,1000);
         }else if(status === 2){
             view.highlightCorrectPiece(id);
+            view.updateData(game.getGameData());
         }else if(status ===3){
             view.highlightInvalidPiece(id);
             view.showMessage('Invalid choice! Game over!');
@@ -46,8 +48,8 @@ var controller = (function(){
             view.clearBoard(game.getNumberOfPieces()-1, game.getLevel());
             game.increaseLevel();
             view.showPieces(game.getNumberOfPieces(), verifyPiece);
-            view.updateData(game.getLevel());
             game.calculatePiecesToGuess();
+            view.updateData(game.getGameData());
             view.highlightPieces(game.getPiecesToGuess());
             game.setIsHighlighted(true);
             setTimeout(pauseGame,game.getTimeHighlight());
@@ -56,7 +58,6 @@ var controller = (function(){
      return {
          'setInitialView': setInitialView,
          'startGame': startGame,
-         // 'displayLevel': displayLevel,
          'addPieces': addPieces,
          'verifyPiece': verifyPiece,
      }

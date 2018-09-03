@@ -52,8 +52,11 @@ var view = ( function() {
                 selectedPiece.setAttribute("class", "regularPiece");
             }
         },
-        updateData = function(level){
-            document.getElementById('level').innerHTML = level;
+        updateData = function(data){
+            document.getElementById('level').innerHTML = data.level;
+            document.getElementById('piecesNo').innerHTML = data.numberOfPiecesToGuess;
+            document.getElementById('piecesToQuess').innerHTML = data.remainingPiecesToGuess;
+
         },
 
         showMessage = function(message){

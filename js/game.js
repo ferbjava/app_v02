@@ -4,24 +4,28 @@ var game = (function(){
     var initialNumberOfPieces = 4,
         numberOfPieces,
         timeHighlight,
-        numberOfPiecesToGuess,
-        level,
+        // numberOfPiecesToGuess,
         piecesToGuess = [],
         piecesGuessed = [],
         isGameOn,
         isHighlighted,
+        gameData = {
+            level: 0,
+            numberOfPiecesToGuess: 0,
+            remainingPiecesToGuess: 0
+        },
 
         gameInit = function(){
-            level = 0;
+            // level = 0;
             numberOfPieces = initialNumberOfPieces;
             isGameOn = false;
             isHighlighted = false;
+            gameData.level = 0;
+            gameData.numberOfPiecesToGuess = 0;
+            gameData.remainingPiecesToGuess = 0;
         },
 
         getNumberOfPieces = function (){
-            // if(level == 0){
-            //     return numberOfPieces +1;
-            // }
             return numberOfPieces;
         },
 
@@ -38,10 +42,12 @@ var game = (function(){
         },
 
         calculatePiecesToGuess = function (){
-            numberOfPiecesToGuess = parseInt((numberOfPieces-2)/2);
+            // numberOfPiecesToGuess = parseInt((numberOfPieces-2)/2);
+            gameData.numberOfPiecesToGuess = parseInt((numberOfPieces-2)/2);
+            gameData.remainingPiecesToGuess = gameData.numberOfPiecesToGuess;
             piecesToGuess.length = 0;
             piecesGuessed.length = 0;
-            while(piecesToGuess.length < numberOfPiecesToGuess){
+            while(piecesToGuess.length < gameData.numberOfPiecesToGuess){
                 var tempId = 'piece_'+Math.ceil(Math.random()*numberOfPieces);
                 if(!piecesToGuess.includes(tempId)){
                     piecesToGuess.push(tempId);
@@ -50,7 +56,7 @@ var game = (function(){
         },
 
         getNumberOfPiecesToGuess = function (){
-            return numberOfPiecesToGuess;
+            return gameData.numberOfPiecesToGuess;
         },
 
         getPiecesToGuess = function(){
@@ -58,11 +64,15 @@ var game = (function(){
         },
 
         increaseLevel = function(){
-            level++;
+            gameData.level++;
         },
 
         getLevel = function(){
-            return level;
+            return gameData.level;
+        },
+
+        getGameData = function(){
+            return gameData;
         },
 
         setIsHighlighted = function(value){
@@ -89,8 +99,10 @@ var game = (function(){
                     }
                     piecesGuessed.push(id);
                     if(piecesToGuess.length===piecesGuessed.length){
+                        gameData.remainingPiecesToGuess--;
                         return 1;
                     } else {
+                        gameData.remainingPiecesToGuess--;
                         return 2;
                     }
                 }else{
@@ -117,7 +129,8 @@ var game = (function(){
         'getIsGameOn': getIsGameOn,
         'verifyPiece': verifyPiece,
         'increaseLevel': increaseLevel,
-        'getLevel': getLevel
+        'getLevel': getLevel,
+        'getGameData': getGameData
 
     }
 })();
