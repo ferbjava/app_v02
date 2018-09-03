@@ -1,14 +1,8 @@
 var controller = (function(){
 
-    var gameData = {
-        level: 0,
-        piecesNo: 4,
-        piecesToGuess: 1
-        },
-    setInitialView = function(){
+    var setInitialView = function(){
         game.gameInit();
-        view.setNumberOfPieces(game.getNumberOfPieces());
-        view.showPieces();
+        view.showPieces(game.getNumberOfPieces(), verifyPiece);
         view.updateData(game.getLevel());
     },
 
@@ -16,14 +10,12 @@ var controller = (function(){
         if(!game.getIsHighlighted()){
             game.setIsGameOn(true);
             game.setTimeHighlight(time);
-            // view.clearBoard();
-            // game.increaseLevel();
             displayLevel();
         }
      },
 
      pauseGame = function(){
-         view.showBasicView();
+         view.showBasicView(game.getNumberOfPieces());
          game.setIsHighlighted(false);
      },
 
@@ -31,21 +23,19 @@ var controller = (function(){
         view.addPieces();
      },
 
-     verifyPiece = function(id){
-        var status = game.verifyPiece(id);
+     verifyPiece = function(event){
+        var id = event.target.id,
+            status = game.verifyPiece(id);
         if(status === 1){
             view.highlightCorrectPiece(id);
             game.increasePiecesNo();
-            // view.clearBoard();
-            // game.increaseLevel();
             setTimeout(displayLevel,1000);
-            // displayLevel();
         }else if(status === 2){
             view.highlightCorrectPiece(id);
         }else if(status ===3){
             view.highlightInvalidPiece(id);
             view.showMessage('Invalid choice! Game over!');
-            view.clearBoard();
+            view.clearBoard(game.getNumberOfPieces());
             setInitialView();
             startGame(game.getTimeHighlight());
         }
@@ -53,10 +43,9 @@ var controller = (function(){
 
      // private methods
      displayLevel = function(){
+            view.clearBoard(game.getNumberOfPieces()-1, game.getLevel());
             game.increaseLevel();
-            view.clearBoard();
-            view.setNumberOfPieces(game.getNumberOfPieces());
-            view.showPieces();
+            view.showPieces(game.getNumberOfPieces(), verifyPiece);
             view.updateData(game.getLevel());
             game.calculatePiecesToGuess();
             view.highlightPieces(game.getPiecesToGuess());
@@ -67,7 +56,7 @@ var controller = (function(){
      return {
          'setInitialView': setInitialView,
          'startGame': startGame,
-         'displayLevel': displayLevel,
+         // 'displayLevel': displayLevel,
          'addPieces': addPieces,
          'verifyPiece': verifyPiece,
      }

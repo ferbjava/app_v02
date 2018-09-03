@@ -19,6 +19,9 @@ var game = (function(){
         },
 
         getNumberOfPieces = function (){
+            // if(level == 0){
+            //     return numberOfPieces +1;
+            // }
             return numberOfPieces;
         },
 

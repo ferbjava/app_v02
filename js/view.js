@@ -1,26 +1,26 @@
 'use strict';
 
 var view = ( function() {
-    var numberOfPieces,
-
-        setNumberOfPieces = function(pieces){
-            numberOfPieces = pieces;
-        },
-
-        showPieces = function(){
+    var showPieces = function(numberOfPieces, cb){
             var parent = document.getElementById('board');
-                for(var i = 1; i <= numberOfPieces; i++){
-                    var tempPiece = document.createElement("div"),
-                        tempId = 'piece_'+ i;
-                    tempPiece.className = 'regularPiece';
-                    tempPiece.setAttribute('id', tempId);
-                    tempPiece.addEventListener('click',function(){controller.verifyPiece(this.id);});
-                    parent.appendChild(tempPiece);
+            for(var i = 1; i <= numberOfPieces; i++){
+                var tempPiece = document.createElement("div"),
+                    tempId = 'piece_'+ i;
+                tempPiece.className = 'regularPiece';
+                tempPiece.setAttribute('id', tempId);
+                tempPiece.addEventListener('click',cb);
+                parent.appendChild(tempPiece);
             }
         },
 
-        clearBoard = function(){
-            for(var i = 1; i <= numberOfPieces; i++){
+        clearBoard = function(numberOfPieces, level){
+            var piecesToRemove;
+            if(level === 0){
+                piecesToRemove = numberOfPieces + 1;
+            } else{
+                piecesToRemove = numberOfPieces;
+            }
+            for(var i = 1; i <= piecesToRemove; i++){
                 var tempId = 'piece_'+i,
                     pieceToRemove = document.getElementById(tempId);
                 pieceToRemove.parentNode.removeChild(pieceToRemove);
@@ -45,7 +45,7 @@ var view = ( function() {
             selectedPiece.setAttribute("class", "invalidPiece");
         },
 
-        showBasicView = function(){
+        showBasicView = function(numberOfPieces){
             for(var i = 1; i <= numberOfPieces; i++){
                 var piece = "piece_"+i.toString(),
                     selectedPiece = document.getElementById(piece);
@@ -62,7 +62,6 @@ var view = ( function() {
 
     return {
         'showPieces':showPieces,
-        'setNumberOfPieces': setNumberOfPieces,
         'clearBoard': clearBoard,
         'highlightPieces': highlightPieces,
         'highlightCorrectPiece': highlightCorrectPiece,
