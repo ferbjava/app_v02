@@ -1,0 +1,68 @@
+h1{
+    font-family: Calibri;
+    font-weight: bold;
+    text-align: center;
+}
+div{
+    font-family: Calibri;
+    font-size: 20px;
+}
+
+.description{
+    display: block;
+    text-align: center;
+    margin: 0.5% 2% 0.5% 2%;
+}
+
+.menu{
+    border: #ffe4c4;
+    border-radius: 20px;
+    background: #ffe4c4;
+    padding: 1%;
+    width: 25%;
+    margin: 0.5%;
+}
+.buttons{
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 0.5%;
+}
+
+.flex-board{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    background: #808080;
+}
+
+.piece{
+    border-style: solid;
+    border-radius: 20px;
+    width: 5%;
+    height: 100px;
+    margin: 2%;
+}
+
+.regularPiece{
+    border-color: #8b4513;
+    background: #8b4513;
+}
+
+.highlightedPiece{
+    border-color: #00008b;
+    background: #00008b;
+}
+
+.correctPiece{
+    border-color: #008000;
+    background: #008000;
+}
+
+.invalidPiece{
+    border-color: #8b0000;
+    background: #8b0000;
+}
+
+.piece:hover{
+    border-style: outset;
+}

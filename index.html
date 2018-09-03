@@ -3,100 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Best game in universe</title>
-    <style>
-        .flex-board{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            background: #808080;
-        }
-        .piece{
-            border-style: solid;
-            border-radius: 20px;
-            width: 5%;
-            height: 100px;
-            margin: 2%;
-        }
-        div.regularPiece{
-            border-style: solid;
-            border-radius: 20px;
-            border-color: #8b4513;
-            background: #8b4513;
-            width: 5%;
-            height: 100px;
-            margin: 2%;
-        }
-        div.highlightedPiece{
-            border-style: solid;
-            border-radius: 20px;
-            border-color: #00008b;
-            background: #00008b;
-            width: 5%;
-            height: 100px;
-            margin: 2%;
-        }
-        div.correctPiece{
-            border-style: solid;
-            border-radius: 20px;
-            border-color: #008000;
-            background: #008000;
-            width: 5%;
-            height: 100px;
-            margin: 2%;
-        }
-        div.invalidPiece{
-            border-style: solid;
-            border-radius: 20px;
-            border-color: #8b0000;
-            background: #8b0000;
-            width: 5%;
-            height: 100px;
-            margin: 2%;
-        }
-        div.regularPiece:hover{
-            border-style: outset;
-        }
-        div.menu{
-            display: inline;
-            background: #ffe4c4;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/memoryGameStyles.css"^>
 </head>
 <body onload = "controller.setInitialView()">
-    <h1>Memory game</h1>
-    <div>After click on button 'highlight' game will highlight for a moment element. After that player have to guess the correct element by clicking on them
+    <h1> Memory game </h1>
+
+    <div class = "description">
+        Click on button 'highlight' and game will highlight some elements for a moment.
+        After that player have to guess the correct element by clicking on them.
     </div>
-    <div class="menu">
-        <form>
-            Time of highlight
-            <input type = "number" name = "timeHighlight" value = "2000"/>
-            <br>
-            <input type = "button" onclick="controller.startGame(timeHighlight.value)" value = "Highlight!"/>
-        </form>
-    </div>
+
     <div>
-        <span>
-            Level:
-        </span>
-        <span id="level">
-            ---
-        </span>
-    </div>
-    <div>
-        <span>
-            Pieces to guess:
-        </span>
-        <span id="piecesNo">
-            0
-        </span>
-    </div>
-    <div>
-        <span>
-            Remaining pieces to quess:
-        </span>
-        <span id="piecesToQuess">
-            0
-        </span>
+        <div class = "menu">
+            <form>
+                Time of highlight
+                <input type = "number" name = "timeHighlight" value = "1000"/>
+                <br>
+                <input class="buttons" type = "button" onclick="controller.startGame(timeHighlight.value)" value = "Highlight!"/>
+            </form>
+        </div>
+        <div class = "menu">
+            <div>
+                <span>
+                    Level:
+                </span>
+                <span id="level">
+                    ---
+                </span>
+            </div>
+            <div>
+                <span>
+                    Pieces to guess:
+                </span>
+                <span id="piecesNo">
+                    0
+                </span>
+            </div>
+            <div>
+                <span>
+                    Remaining pieces to quess:
+                </span>
+                <span id="piecesToGuess">
+                    0
+                </span>
+            </div>
+            <button class="buttons"> Next level</button>
+        </div>
     </div>
 
     <div class="flex-board" id = "board">

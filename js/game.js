@@ -4,33 +4,27 @@ var game = (function(){
     var initialNumberOfPieces = 4,
         numberOfPieces,
         timeHighlight,
-        // numberOfPiecesToGuess,
         piecesToGuess = [],
         piecesGuessed = [],
         isGameOn,
         isHighlighted,
         gameData = {
-            level: 0,
+            level: 1,
             numberOfPiecesToGuess: 0,
             remainingPiecesToGuess: 0
         },
 
         gameInit = function(){
-            // level = 0;
-            numberOfPieces = initialNumberOfPieces;
             isGameOn = false;
             isHighlighted = false;
-            gameData.level = 0;
+            numberOfPieces = initialNumberOfPieces;
+            gameData.level = 1;
             gameData.numberOfPiecesToGuess = 0;
             gameData.remainingPiecesToGuess = 0;
         },
 
         getNumberOfPieces = function (){
             return numberOfPieces;
-        },
-
-        increasePiecesNo = function(){
-            numberOfPieces++;
         },
 
         setTimeHighlight = function(time){
@@ -42,7 +36,6 @@ var game = (function(){
         },
 
         calculatePiecesToGuess = function (){
-            // numberOfPiecesToGuess = parseInt((numberOfPieces-2)/2);
             gameData.numberOfPiecesToGuess = parseInt((numberOfPieces-2)/2);
             gameData.remainingPiecesToGuess = gameData.numberOfPiecesToGuess;
             piecesToGuess.length = 0;
@@ -55,16 +48,13 @@ var game = (function(){
             }
         },
 
-        getNumberOfPiecesToGuess = function (){
-            return gameData.numberOfPiecesToGuess;
-        },
-
         getPiecesToGuess = function(){
             return piecesToGuess;
         },
 
         increaseLevel = function(){
             gameData.level++;
+            numberOfPieces++;
         },
 
         getLevel = function(){
@@ -92,7 +82,7 @@ var game = (function(){
         },
 
         verifyPiece = function(id){
-            if(!isHighlighted){
+            if(!isHighlighted && isGameOn){
                 if(piecesToGuess.includes(id)){
                     if(piecesGuessed.includes(id)){
                         return 3;
@@ -113,24 +103,19 @@ var game = (function(){
 
     return {
         'gameInit': gameInit,
-
         'getNumberOfPieces': getNumberOfPieces,
-        'increasePiecesNo': increasePiecesNo,
-
         'setTimeHighlight': setTimeHighlight,
         'getTimeHighlight': getTimeHighlight,
-
         'calculatePiecesToGuess': calculatePiecesToGuess,
-        'getNumberOfPiecesToGuess': getNumberOfPiecesToGuess,
         'getPiecesToGuess': getPiecesToGuess,
+        'increaseLevel': increaseLevel,
+        'getLevel': getLevel,
+        'getGameData': getGameData,
+
         'setIsHighlighted': setIsHighlighted,
         'getIsHighlighted': getIsHighlighted,
         'setIsGameOn': setIsGameOn,
         'getIsGameOn': getIsGameOn,
-        'verifyPiece': verifyPiece,
-        'increaseLevel': increaseLevel,
-        'getLevel': getLevel,
-        'getGameData': getGameData
-
+        'verifyPiece': verifyPiece
     }
 })();
