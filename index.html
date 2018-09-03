@@ -19,7 +19,7 @@
                 Time of highlight
                 <input type = "number" name = "timeHighlight" value = "1000"/>
                 <br>
-                <input class="buttons" type = "button" onclick="controller.startGame(timeHighlight.value)" value = "Highlight!"/>
+                <input class="buttons" id="highlightButton" type = "button" onclick="controller.startGame(timeHighlight.value)" value = "Highlight!"/>
             </form>
         </div>
         <div class = "menu">
@@ -47,7 +47,7 @@
                     0
                 </span>
             </div>
-            <button class="buttons"> Next level</button>
+            <button class="buttons" id="nextLevelButton" onclick="controller.nextLevel()"> Next level</button>
         </div>
     </div>
 

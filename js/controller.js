@@ -1,3 +1,5 @@
+'use strict';
+
 var controller = (function(){
 
     var setInitialView = function(){
@@ -7,11 +9,14 @@ var controller = (function(){
     },
 
      startGame = function(time){
-        if(!game.getIsHighlighted()){
-            game.setIsGameOn(true);
-            game.setTimeHighlight(time);
-            displayLevel();
-        }
+        game.setIsGameOn(true);
+        game.setTimeHighlight(time);
+        displayLevel();
+     },
+
+     nextLevel = function(){
+        game.increaseLevel();
+        displayLevel();
      },
 
      verifyPiece = function(event){
@@ -27,10 +32,7 @@ var controller = (function(){
             view.updateData(game.getGameData());
         }else if(status === 3){
             view.highlightInvalidPiece(id);
-            view.showMessage('Invalid choice! Game over!');
-            view.clearBoard();
-            setInitialView();
-            startGame(game.getTimeHighlight());
+            setTimeout(pauseError,1);
         }
      },
 
@@ -45,6 +47,12 @@ var controller = (function(){
         setTimeout(pauseGame,game.getTimeHighlight());
      },
 
+     pauseError = function(){
+         alert('Invalid choice! Game over!');
+         game.gameInit();
+         startGame(game.getTimeHighlight());
+     },
+
      pauseGame = function(){
         view.showBasicView(game.getNumberOfPieces());
         game.setIsHighlighted(false);
@@ -54,6 +62,7 @@ var controller = (function(){
          'setInitialView': setInitialView,
          'startGame': startGame,
          'verifyPiece': verifyPiece,
+         'nextLevel': nextLevel
      }
 
 })();

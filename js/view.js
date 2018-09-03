@@ -14,8 +14,8 @@ var view = ( function() {
         },
 
         clearBoard = function(){
-            var pToRemove = document.getElementById("board").childElementCount;
-            for(var i = 1; i <= pToRemove; i++){
+            var piecesToRemove = document.getElementById("board").childElementCount;
+            for(var i = 1; i <= piecesToRemove; i++){
                 var tempId = 'piece_'+i,
                     pieceToRemove = document.getElementById(tempId);
                 pieceToRemove.parentNode.removeChild(pieceToRemove);
@@ -23,6 +23,7 @@ var view = ( function() {
         },
 
         highlightPieces = function(piecesId){
+            disableButtons();
             for(var i = 0; i < piecesId.length; i++){
                 var pieceId = piecesId[i],
                     selectedPiece = document.getElementById(pieceId);
@@ -31,6 +32,7 @@ var view = ( function() {
         },
 
         highlightCorrectPiece = function(pieceId){
+            disableButtons();
             var selectedPiece = document.getElementById(pieceId);
             selectedPiece.className = 'piece ' + 'correctPiece';
         },
@@ -46,6 +48,7 @@ var view = ( function() {
                     selectedPiece = document.getElementById(piece);
                 selectedPiece.className = 'piece ' + 'regularPiece';
             }
+            enableButtons();
         },
 
         updateData = function(data){
@@ -54,8 +57,15 @@ var view = ( function() {
             document.getElementById('piecesToGuess').innerHTML = data.remainingPiecesToGuess;
         },
 
-        showMessage = function(message){
-            alert(message);
+        // Private methods
+        disableButtons = function(){
+            document.getElementById("highlightButton").disabled = true;
+            document.getElementById("nextLevelButton").disabled = true;
+        },
+
+        enableButtons = function(){
+            document.getElementById("highlightButton").disabled = false;
+            document.getElementById("nextLevelButton").disabled = false;
         };
 
     return {
@@ -66,6 +76,5 @@ var view = ( function() {
         'highlightInvalidPiece': highlightInvalidPiece,
         'showBasicView': showBasicView,
         'updateData':updateData,
-        'showMessage': showMessage
     }
 })();

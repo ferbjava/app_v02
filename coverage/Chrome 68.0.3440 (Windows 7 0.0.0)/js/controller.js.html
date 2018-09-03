@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">8.33% </span>
+        <span class="strong">8.57% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>3/36</span>
+        <span class='fraction'>3/35</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>0/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">14.29% </span>
+        <span class="strong">12.5% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/7</span>
+        <span class='fraction'>1/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">8.33% </span>
+        <span class="strong">8.57% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/36</span>
+        <span class='fraction'>3/35</span>
       </div>
     </div>
   </div>
@@ -107,7 +107,12 @@
 62
 63
 64
-65</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+65
+66
+67
+68</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -119,25 +124,16 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -160,6 +156,16 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -171,7 +177,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var controller = (function(){
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+&nbsp;
+var controller = (function(){
 &nbsp;
     var setInitialView = <span class="fstat-no" title="function not covered" >function(){</span>
 <span class="cstat-no" title="statement not covered" >        game.gameInit();</span>
@@ -180,20 +188,14 @@
     },
 &nbsp;
      startGame = <span class="fstat-no" title="function not covered" >function(time){</span>
-<span class="cstat-no" title="statement not covered" >        if(!game.getIsHighlighted()){</span>
-<span class="cstat-no" title="statement not covered" >            game.setIsGameOn(true);</span>
-<span class="cstat-no" title="statement not covered" >            game.setTimeHighlight(time);</span>
-<span class="cstat-no" title="statement not covered" >            displayLevel();</span>
-        }
+<span class="cstat-no" title="statement not covered" >        game.setIsGameOn(true);</span>
+<span class="cstat-no" title="statement not covered" >        game.setTimeHighlight(time);</span>
+<span class="cstat-no" title="statement not covered" >        displayLevel();</span>
      },
 &nbsp;
-     pauseGame = <span class="fstat-no" title="function not covered" >function(){</span>
-<span class="cstat-no" title="statement not covered" >         view.showBasicView(game.getNumberOfPieces());</span>
-<span class="cstat-no" title="statement not covered" >         game.setIsHighlighted(false);</span>
-     },
-&nbsp;
-     addPieces = <span class="fstat-no" title="function not covered" >function(){</span>
-<span class="cstat-no" title="statement not covered" >        view.addPieces();</span>
+     nextLevel = <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >        game.increaseLevel();</span>
+<span class="cstat-no" title="statement not covered" >        displayLevel();</span>
      },
 &nbsp;
      verifyPiece = <span class="fstat-no" title="function not covered" >function(event){</span>
@@ -202,37 +204,44 @@
 <span class="cstat-no" title="statement not covered" >        if(status === 1){</span>
 <span class="cstat-no" title="statement not covered" >            view.highlightCorrectPiece(id);</span>
 <span class="cstat-no" title="statement not covered" >            view.updateData(game.getGameData());</span>
-<span class="cstat-no" title="statement not covered" >            game.increasePiecesNo();</span>
+<span class="cstat-no" title="statement not covered" >            game.increaseLevel();</span>
 <span class="cstat-no" title="statement not covered" >            setTimeout(displayLevel,1000);</span>
         }else <span class="cstat-no" title="statement not covered" >if(status === 2){</span>
 <span class="cstat-no" title="statement not covered" >            view.highlightCorrectPiece(id);</span>
 <span class="cstat-no" title="statement not covered" >            view.updateData(game.getGameData());</span>
-        }else <span class="cstat-no" title="statement not covered" >if(status ===3){</span>
+        }else <span class="cstat-no" title="statement not covered" >if(status === 3){</span>
 <span class="cstat-no" title="statement not covered" >            view.highlightInvalidPiece(id);</span>
-<span class="cstat-no" title="statement not covered" >            view.showMessage('Invalid choice! Game over!');</span>
-<span class="cstat-no" title="statement not covered" >            view.clearBoard(game.getNumberOfPieces());</span>
-<span class="cstat-no" title="statement not covered" >            setInitialView();</span>
-<span class="cstat-no" title="statement not covered" >            startGame(game.getTimeHighlight());</span>
+<span class="cstat-no" title="statement not covered" >            setTimeout(pauseError,1);</span>
         }
      },
 &nbsp;
      // private methods
      displayLevel = <span class="fstat-no" title="function not covered" >function(){</span>
-<span class="cstat-no" title="statement not covered" >            view.clearBoard(game.getNumberOfPieces()-1, game.getLevel());</span>
-<span class="cstat-no" title="statement not covered" >            game.increaseLevel();</span>
-<span class="cstat-no" title="statement not covered" >            view.showPieces(game.getNumberOfPieces(), verifyPiece);</span>
-<span class="cstat-no" title="statement not covered" >            game.calculatePiecesToGuess();</span>
-<span class="cstat-no" title="statement not covered" >            view.updateData(game.getGameData());</span>
-<span class="cstat-no" title="statement not covered" >            view.highlightPieces(game.getPiecesToGuess());</span>
-<span class="cstat-no" title="statement not covered" >            game.setIsHighlighted(true);</span>
-<span class="cstat-no" title="statement not covered" >            setTimeout(pauseGame,game.getTimeHighlight());</span>
+<span class="cstat-no" title="statement not covered" >        view.clearBoard();</span>
+<span class="cstat-no" title="statement not covered" >        view.showPieces(game.getNumberOfPieces(), verifyPiece);</span>
+<span class="cstat-no" title="statement not covered" >        game.calculatePiecesToGuess();</span>
+<span class="cstat-no" title="statement not covered" >        view.updateData(game.getGameData());</span>
+<span class="cstat-no" title="statement not covered" >        view.highlightPieces(game.getPiecesToGuess());</span>
+<span class="cstat-no" title="statement not covered" >        game.setIsHighlighted(true);</span>
+<span class="cstat-no" title="statement not covered" >        setTimeout(pauseGame,game.getTimeHighlight());</span>
+     },
+&nbsp;
+     pauseError = <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >         alert('Invalid choice! Game over!');</span>
+<span class="cstat-no" title="statement not covered" >         game.gameInit();</span>
+<span class="cstat-no" title="statement not covered" >         startGame(game.getTimeHighlight());</span>
+     },
+&nbsp;
+     pauseGame = <span class="fstat-no" title="function not covered" >function(){</span>
+<span class="cstat-no" title="statement not covered" >        view.showBasicView(game.getNumberOfPieces());</span>
+<span class="cstat-no" title="statement not covered" >        game.setIsHighlighted(false);</span>
      };
 &nbsp;
      return {
          'setInitialView': setInitialView,
          'startGame': startGame,
-         'addPieces': addPieces,
          'verifyPiece': verifyPiece,
+         'nextLevel': nextLevel
      }
 &nbsp;
 })();</pre></td></tr>
@@ -241,7 +250,7 @@
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 03 2018 15:25:56 GMT+0200 (GMT+02:00)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 03 2018 20:31:23 GMT+0200 (GMT+02:00)
 </div>
 </div>
 <script src="../prettify.js"></script>

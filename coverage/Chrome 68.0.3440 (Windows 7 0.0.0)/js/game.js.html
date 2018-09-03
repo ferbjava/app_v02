@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">24.39% </span>
+        <span class="strong">25% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>10/41</span>
+        <span class='fraction'>10/40</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/12</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">17.65% </span>
+        <span class="strong">20% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/17</span>
+        <span class='fraction'>3/15</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">24.39% </span>
+        <span class="strong">25% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>10/41</span>
+        <span class='fraction'>10/40</span>
       </div>
     </div>
   </div>
@@ -163,19 +163,7 @@
 118
 119
 120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+121</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
@@ -214,10 +202,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -235,9 +219,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -286,11 +267,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -318,7 +294,7 @@ var game = (function(){
         isGameOn,
         isHighlighted,
         gameData = {
-            level: 0,
+            level: 1,
             numberOfPiecesToGuess: 0,
             remainingPiecesToGuess: 0
         },
@@ -326,18 +302,14 @@ var game = (function(){
         gameInit = function(){
             isGameOn = false;
             isHighlighted = false;
-            gameData.level = 0;
             numberOfPieces = initialNumberOfPieces;
+            gameData.level = 1;
             gameData.numberOfPiecesToGuess = 0;
             gameData.remainingPiecesToGuess = 0;
         },
 &nbsp;
         getNumberOfPieces = function (){
             return numberOfPieces;
-        },
-&nbsp;
-        increasePiecesNo = <span class="fstat-no" title="function not covered" >function(){</span>
-<span class="cstat-no" title="statement not covered" >            numberOfPieces++;</span>
         },
 &nbsp;
         setTimeHighlight = <span class="fstat-no" title="function not covered" >function(time){</span>
@@ -361,16 +333,13 @@ var game = (function(){
             }
         },
 &nbsp;
-        getNumberOfPiecesToGuess = <span class="fstat-no" title="function not covered" >function (){</span>
-<span class="cstat-no" title="statement not covered" >            return gameData.numberOfPiecesToGuess;</span>
-        },
-&nbsp;
         getPiecesToGuess = <span class="fstat-no" title="function not covered" >function(){</span>
 <span class="cstat-no" title="statement not covered" >            return piecesToGuess;</span>
         },
 &nbsp;
         increaseLevel = <span class="fstat-no" title="function not covered" >function(){</span>
 <span class="cstat-no" title="statement not covered" >            gameData.level++;</span>
+<span class="cstat-no" title="statement not covered" >            numberOfPieces++;</span>
         },
 &nbsp;
         getLevel = <span class="fstat-no" title="function not covered" >function(){</span>
@@ -419,25 +388,20 @@ var game = (function(){
 &nbsp;
     return {
         'gameInit': gameInit,
-&nbsp;
         'getNumberOfPieces': getNumberOfPieces,
-        'increasePiecesNo': increasePiecesNo,
-&nbsp;
         'setTimeHighlight': setTimeHighlight,
         'getTimeHighlight': getTimeHighlight,
-&nbsp;
         'calculatePiecesToGuess': calculatePiecesToGuess,
-        'getNumberOfPiecesToGuess': getNumberOfPiecesToGuess,
         'getPiecesToGuess': getPiecesToGuess,
+        'increaseLevel': increaseLevel,
+        'getLevel': getLevel,
+        'getGameData': getGameData,
+&nbsp;
         'setIsHighlighted': setIsHighlighted,
         'getIsHighlighted': getIsHighlighted,
         'setIsGameOn': setIsGameOn,
         'getIsGameOn': getIsGameOn,
-        'verifyPiece': verifyPiece,
-        'increaseLevel': increaseLevel,
-        'getLevel': getLevel,
-        'getGameData': getGameData
-&nbsp;
+        'verifyPiece': verifyPiece
     }
 })();</pre></td></tr>
 </table></pre>
@@ -445,7 +409,7 @@ var game = (function(){
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 03 2018 15:25:56 GMT+0200 (GMT+02:00)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Sep 03 2018 20:31:23 GMT+0200 (GMT+02:00)
 </div>
 </div>
 <script src="../prettify.js"></script>

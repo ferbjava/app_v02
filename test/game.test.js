@@ -1,6 +1,6 @@
 describe("Game", function(){
     it('should return pieces to guess', function(){
-        // arange
+        // arrange
         var expected_value = 4;
 
         // act
