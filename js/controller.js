@@ -16,22 +16,11 @@ var controller = (function(){
         if(!game.getIsHighlighted()){
             game.setIsGameOn(true);
             game.setTimeHighlight(time);
-
-            view.clearBoard();
-            game.increaseLevel();
+            // view.clearBoard();
+            // game.increaseLevel();
             displayLevel();
         }
      },
-
-     displayLevel = function(){
-        view.setNumberOfPieces(game.getNumberOfPieces());
-        view.showPieces();
-        view.updateData(game.getLevel());
-        game.calculatePiecesToGuess();
-        view.highlightPieces(game.getPiecesToGuess());
-        game.setIsHighlighted(true);
-        setTimeout(pauseGame,game.getTimeHighlight());
-      },
 
      pauseGame = function(){
          view.showBasicView();
@@ -47,10 +36,10 @@ var controller = (function(){
         if(status === 1){
             view.highlightCorrectPiece(id);
             game.increasePiecesNo();
-
-            view.clearBoard();
-            game.increaseLevel();
-            displayLevel();
+            // view.clearBoard();
+            // game.increaseLevel();
+            setTimeout(displayLevel,1000);
+            // displayLevel();
         }else if(status === 2){
             view.highlightCorrectPiece(id);
         }else if(status ===3){
@@ -60,6 +49,19 @@ var controller = (function(){
             setInitialView();
             startGame(game.getTimeHighlight());
         }
+     },
+
+     // private methods
+     displayLevel = function(){
+            game.increaseLevel();
+            view.clearBoard();
+            view.setNumberOfPieces(game.getNumberOfPieces());
+            view.showPieces();
+            view.updateData(game.getLevel());
+            game.calculatePiecesToGuess();
+            view.highlightPieces(game.getPiecesToGuess());
+            game.setIsHighlighted(true);
+            setTimeout(pauseGame,game.getTimeHighlight());
      };
 
      return {
