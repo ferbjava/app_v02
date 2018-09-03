@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Best game in universe</title>
     <style>
-        .flex-container{
+        .flex-board{
             display: flex;
             flex-wrap: wrap;
             justify-content: flex-start;
@@ -49,27 +49,51 @@
         div.regularPiece:hover{
             border-style: outset;
         }
+        div.menu{
+            display: inline;
+            background: #ffe4c4;
+        }
     </style>
 </head>
 <body onload = "controller.setInitialView()">
     <h1>Memory game</h1>
-    <p>After click on button 'highlight' game will highlight for a moment element. After that player have to guess the correct element by clicking on them</p>
-    <section style="background: bisque">
-        <div>
-            <form>
-                Time of highlight
-                <input type = "number" name = "timeHighlight" value = "2000"/>
-                <br>
-                <input type = "button" onclick="controller.startGame(timeHighlight.value)" value = "Start!"/>
-            </form>
-        </div>
-        <div>
-            cos tam...
-        </div>
-    </section>
-    <div class="flex-container" id = "board">
+    <div>After click on button 'highlight' game will highlight for a moment element. After that player have to guess the correct element by clicking on them
+    </div>
+    <div class="menu">
+        <form>
+            Time of highlight
+            <input type = "number" name = "timeHighlight" value = "2000"/>
+            <br>
+            <input type = "button" onclick="controller.startGame(timeHighlight.value)" value = "Start!"/>
+        </form>
+    </div>
+    <div>
+        <span>
+            Level:
+        </span>
+        <span id="level">
+            ---
+        </span>
+    </div>
+    <div>
+        <span>
+            Pieces to guess:
+        </span>
+        <span id="piecesNo">
+            0
+        </span>
+    </div>
+    <div>
+        <span>
+            Remaining pieces to quess:
+        </span>
+        <span id="piecesToQuess">
+            0
+        </span>
     </div>
 
+    <div class="flex-board" id = "board">
+    </div>
 
     <script src = "js/view.js"></script>
     <script src = "js/game.js"></script>

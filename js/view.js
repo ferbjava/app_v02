@@ -12,10 +12,10 @@ var view = ( function() {
                 for(var i = 1; i <= numberOfPieces; i++){
                     var tempPiece = document.createElement("div"),
                         tempId = 'piece_'+ i;
-                        tempPiece.className = 'regularPiece';
-                        tempPiece.setAttribute('id', tempId);
-                        tempPiece.addEventListener('click',function(){controller.verifyPiece(this.id);});
-                        parent.appendChild(tempPiece);
+                    tempPiece.className = 'regularPiece';
+                    tempPiece.setAttribute('id', tempId);
+                    tempPiece.addEventListener('click',function(){controller.verifyPiece(this.id);});
+                    parent.appendChild(tempPiece);
             }
         },
 
@@ -23,7 +23,7 @@ var view = ( function() {
             for(var i = 1; i <= numberOfPieces; i++){
                 var tempId = 'piece_'+i,
                     pieceToRemove = document.getElementById(tempId);
-                    pieceToRemove.parentNode.removeChild(pieceToRemove);
+                pieceToRemove.parentNode.removeChild(pieceToRemove);
             }
         },
 
@@ -31,7 +31,7 @@ var view = ( function() {
             for(var i = 0; i < piecesId.length; i++){
                 var pieceId = piecesId[i],
                     selectedPiece = document.getElementById(pieceId);
-                    selectedPiece.setAttribute("class", "highlightedPiece");
+                selectedPiece.setAttribute("class", "highlightedPiece");
             }
         },
 
@@ -49,8 +49,11 @@ var view = ( function() {
             for(var i = 1; i <= numberOfPieces; i++){
                 var piece = "piece_"+i.toString(),
                     selectedPiece = document.getElementById(piece);
-                    selectedPiece.setAttribute("class", "regularPiece");
+                selectedPiece.setAttribute("class", "regularPiece");
             }
+        },
+        updateData = function(level){
+            document.getElementById('level').innerHTML = level;
         },
 
         showMessage = function(message){
@@ -65,6 +68,7 @@ var view = ( function() {
         'highlightCorrectPiece': highlightCorrectPiece,
         'highlightInvalidPiece': highlightInvalidPiece,
         'showBasicView': showBasicView,
+        'updateData':updateData,
         'showMessage': showMessage
     }
 })();

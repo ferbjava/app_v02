@@ -5,12 +5,14 @@ var game = (function(){
         numberOfPieces,
         timeHighlight,
         numberOfPiecesToGuess,
+        level,
         piecesToGuess = [],
         piecesGuessed = [],
         isGameOn,
         isHighlighted,
 
         gameInit = function(){
+            level = 0;
             numberOfPieces = initialNumberOfPieces;
             isGameOn = false;
             isHighlighted = false;
@@ -50,6 +52,14 @@ var game = (function(){
 
         getPiecesToGuess = function(){
             return piecesToGuess;
+        },
+
+        increaseLevel = function(){
+            level++;
+        },
+
+        getLevel = function(){
+            return level;
         },
 
         setIsHighlighted = function(value){
@@ -102,6 +112,9 @@ var game = (function(){
         'getIsHighlighted': getIsHighlighted,
         'setIsGameOn': setIsGameOn,
         'getIsGameOn': getIsGameOn,
-        'verifyPiece': verifyPiece
+        'verifyPiece': verifyPiece,
+        'increaseLevel': increaseLevel,
+        'getLevel': getLevel
+
     }
 })();
